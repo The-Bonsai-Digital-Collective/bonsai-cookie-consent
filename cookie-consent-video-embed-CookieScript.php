@@ -1,26 +1,26 @@
 <?php
 /**
- * Plugin Name: Cookie Consent Video Embed - CookieScript
- * Plugin URI:  https://bonsaidigitalcollective.co.uk/
+ * Plugin Name: Bonsai Cookie Consent - CookieScript
+ * Plugin URI:  https://thebonsaidigitalcollective.co.uk
  * Description: Replaces YouTube embeds with a consent-safe thumbnail overlay until CookieScript marketing consent is granted.
- * Version:     2.1.0
+ * Version:     2.2.0
  * Author:      Ben Ervine / The Bonsai Digital Collective
- * Author URI:  https://bonsaidigitalcollective.co.uk/
+ * Author URI:  https://thebonsaidigitalcollective.co.uk
  * License:     GPL-2.0+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: ccve-cookiescript
- * Requires at least: 6.0
+ * Requires at least: 6.4
  * Requires PHP: 7.4
- * Update URI: https://github.com/gakdesign/cookie-consent-video-embed-cookiescript
+ * Update URI:  https://github.com/The-Bonsai-Digital-Collective/bonsai-cookie-consent
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'CCVE_COOKIESCRIPT_VERSION', '2.1.0' );
+define( 'CCVE_COOKIESCRIPT_VERSION', '2.2.0' );
 define( 'CCVE_COOKIESCRIPT_OPTION_KEY', 'ccve_cookiescript_options' );
-define( 'CCVE_COOKIESCRIPT_GITHUB_REPOSITORY', 'https://github.com/gakdesign/cookie-consent-video-embed-cookiescript' );
+define( 'CCVE_COOKIESCRIPT_GITHUB_REPOSITORY', 'https://github.com/The-Bonsai-Digital-Collective/bonsai-cookie-consent' );
 define( 'CCVE_COOKIESCRIPT_GITHUB_BRANCH', 'main' );
 
 /*
@@ -199,6 +199,26 @@ function ccve_cookiescript_add_admin_menu() {
 add_action( 'admin_menu', 'ccve_cookiescript_add_admin_menu' );
 
 /**
+ * Enqueue inline admin styles scoped to the plugin settings page.
+ *
+ * @param string $hook Current admin page hook suffix.
+ * @return void
+ */
+function ccve_cookiescript_enqueue_admin_styles( $hook ) {
+    if ( 'settings_page_ccve-cookiescript' !== $hook ) {
+        return;
+    }
+
+    wp_add_inline_style(
+        'wp-admin',
+        '.ccve-admin-header{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#ee4367;border-radius:3px;margin:0 0 16px;}'
+        . '.ccve-admin-header__brand{color:#fff;font-weight:700;font-size:13px;letter-spacing:.02em;}'
+        . '.ccve-admin-header__plugin{color:rgba(255,255,255,.75);font-size:12px;}'
+    );
+}
+add_action( 'admin_enqueue_scripts', 'ccve_cookiescript_enqueue_admin_styles' );
+
+/**
  * Render cookie category field.
  *
  * @return void
@@ -274,6 +294,10 @@ function ccve_cookiescript_render_settings_page() {
     }
     ?>
     <div class="wrap">
+        <div class="ccve-admin-header">
+            <span class="ccve-admin-header__brand"><?php esc_html_e( 'The Bonsai Digital Collective', 'ccve-cookiescript' ); ?></span>
+            <span class="ccve-admin-header__plugin"><?php esc_html_e( 'Cookie Consent - CookieScript', 'ccve-cookiescript' ); ?></span>
+        </div>
         <h1><?php esc_html_e( 'Cookie Video Consent - CookieScript', 'ccve-cookiescript' ); ?></h1>
         <form method="post" action="options.php">
             <?php

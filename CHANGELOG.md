@@ -3,6 +3,18 @@
 All notable changes to this plugin are documented in this file.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.0] - 2026-06-24
+
+### Changed
+- Plugin renamed to **Bonsai Cookie Consent - CookieScript** to align with Bonsai Digital Collective branding.
+- Plugin URI and Author URI updated to `https://thebonsaidigitalcollective.co.uk`.
+- Update URI aligned with `The-Bonsai-Digital-Collective` GitHub org.
+- `Requires at least` bumped to `6.4` (reflects actual use of `NodeList.forEach`, `MutationObserver`, `aspect-ratio`, and `inset` CSS).
+- Admin settings page now shows a branded Bonsai header bar (`#ee4367`).
+- Consent overlay CTA hover state updated to use Bonsai brand colour (`#ee4367`).
+
+---
+
 ## [2.1.0] - 2026-06-24
 
 ### Added
@@ -41,6 +53,7 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Added
 - Initial YouTube iframe CookieScript compatibility logic.
 
-[2.1.0]: https://github.com/gakdesign/cookie-consent-video-embed-cookiescript/compare/v2.0.0...v2.1.0
-[2.0.0]: https://github.com/gakdesign/cookie-consent-video-embed-cookiescript/compare/v1.7...v2.0.0
-[1.7]: https://github.com/gakdesign/cookie-consent-video-embed-cookiescript/releases/tag/v1.7
+[2.2.0]: https://github.com/The-Bonsai-Digital-Collective/bonsai-cookie-consent/compare/v2.1.0...v2.2.0
+[2.1.0]: https://github.com/The-Bonsai-Digital-Collective/bonsai-cookie-consent/compare/v2.0.0...v2.1.0
+[2.0.0]: https://github.com/The-Bonsai-Digital-Collective/bonsai-cookie-consent/compare/v1.7...v2.0.0
+[1.7]: https://github.com/The-Bonsai-Digital-Collective/bonsai-cookie-consent/releases/tag/v1.7
