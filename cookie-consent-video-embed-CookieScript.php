@@ -42,7 +42,7 @@ if ( file_exists( $ccve_autoload ) ) {
         );
 
         $ccve_update_checker->setBranch( CCVE_COOKIESCRIPT_GITHUB_BRANCH );
-        $ccve_update_checker->setUpdateCheckInterval( 6 );
+        $ccve_update_checker->scheduler->checkPeriod = 6;
         $ccve_update_checker->getVcsApi()->enableReleaseAssets();
     }
 }
